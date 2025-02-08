@@ -3,12 +3,18 @@ const { spawnSync } = require("child_process");
 
 parentPort.on("message", ({ code, input }) => {
     try {
-        // Run TypeScript code directly using ts-node
-        const execProcess = spawnSync("ts-node", ["-e", code], {
+        // Execute TypeScript code using ts-node with better input handling
+        const execProcess = spawnSync("ts-node", ["--transpile-only", "-e", code], {
             input,
             encoding: "utf-8",
             timeout: 2000,
         });
+
+        if (execProcess.error) {
+            return parentPort.postMessage({
+                error: { fullError: `Execution Error:\n${execProcess.error.message}` },
+            });
+        }
 
         if (execProcess.status !== 0) {
             return parentPort.postMessage({

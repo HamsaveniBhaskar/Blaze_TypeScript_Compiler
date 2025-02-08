@@ -3,11 +3,11 @@ const { spawnSync } = require("child_process");
 
 parentPort.on("message", ({ code, input }) => {
     try {
-        // Execute TypeScript code using ts-node with better input handling
+        // Execute TypeScript code using ts-node with a higher timeout
         const execProcess = spawnSync("ts-node", ["--transpile-only", "-e", code], {
             input,
             encoding: "utf-8",
-            timeout: 2000,
+            timeout: 5000, // Increased timeout to 5 seconds
         });
 
         if (execProcess.error) {

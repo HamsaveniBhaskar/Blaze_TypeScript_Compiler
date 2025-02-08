@@ -3,8 +3,8 @@
 # Install dependencies
 echo "Installing dependencies..."
 
-# Install TypeScript globally
-npm install -g typescript
+# Install ts-node globally for faster execution
+npm install -g ts-node typescript
 
 # Install Node.js dependencies
 npm install

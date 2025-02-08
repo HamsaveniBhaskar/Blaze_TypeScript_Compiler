@@ -7,7 +7,7 @@ parentPort.on("message", ({ code, input }) => {
         const execProcess = spawnSync("ts-node", ["--transpile-only", "-e", code], {
             input,
             encoding: "utf-8",
-            timeout: 5000, // Increased timeout to 5 seconds
+            timeout: 10000, // Increased timeout to 5 seconds
         });
 
         if (execProcess.error) {

@@ -1,8 +1,8 @@
 # Use a lightweight Node.js image
-FROM node:16-slim
+FROM node:16-alpine
 
-# Install TypeScript globally
-RUN npm install -g typescript
+# Install ts-node globally for faster execution
+RUN npm install -g ts-node typescript
 
 # Set working directory
 WORKDIR /app
